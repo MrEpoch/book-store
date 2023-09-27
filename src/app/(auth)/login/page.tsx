@@ -12,10 +12,10 @@ export default function Page({ searchParams }) {
             {isError && <Error message="Failed to login" />}
             <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0">
-          <a href="#" className="flex flex-col-reverse gap-5 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          <Link href="/" className="flex flex-col-reverse gap-5 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <Image src={Logo} className="w-14 h-14 bg-white rounded-lg mr-2" alt="logo" />
     Echoes of Literature
-          </a>
+          </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -39,7 +39,7 @@ export default function Page({ searchParams }) {
                                 <label className="text-gray-500 dark:text-gray-300">Remember me</label>
                               </div>
                           </div>
-                          <a href="#" className="text-sm font-medium text-green-600 hover:underline dark:text-green-500">Forgot password?</a>
+                          <Link href="/forgot-password" className="text-sm font-medium text-green-600 hover:underline dark:text-green-500">Forgot password?</Link>
                       </div>
                       <button type="submit" className="w-full text-white bg-green-600 
         hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium 

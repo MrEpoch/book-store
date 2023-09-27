@@ -17,5 +17,33 @@ export async function middleware(req: NextRequest) {
         return res;
     }
 
+    if (
+        pathname.startsWith('/forgot-password') ||
+        pathname.startsWith('/update-password') ||
+        pathname.startsWith('/login') ||
+        pathname.startsWith('/register') ||
+        pathname.startsWith('/verify-email') ||
+        pathname.startsWith('/auth')
+    ) {
+        if (data.session) {
+            return NextResponse.redirect(new URL('/account', req.url))
+        }
+        return res;   
+    }
+
+    if (pathname.startsWith('/update-password')) {
+        if (data.session) {
+            return res;
+        }
+        const searchParams = new URLSearchParams(req.nextUrl.search)
+        const code = searchParams.get('code')
+        if (code) {
+            await supabase.auth.exchangeCodeForSession(code)
+            return res;
+        } else {
+            return NextResponse.redirect(new URL('/login', req.url))
+        }
+    }
+
     return res;
 }
