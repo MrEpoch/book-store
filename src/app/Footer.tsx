@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
     return (        
 <footer className="dark:bg-gray-900">
@@ -7,13 +9,13 @@ export default function Footer() {
     </span>
     <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a href="/about" className="mr-4 hover:underline md:mr-6 ">About</a>
+            <Link href="/about" className="mr-4 hover:underline md:mr-6 ">About</Link>
         </li>
         <li>
-            <a href="https://www.privacypolicies.com/live/2470fb14-022a-4f19-a2e0-2893fa1693fd" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+            <Link href="https://www.privacypolicies.com/live/2470fb14-022a-4f19-a2e0-2893fa1693fd" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
         </li>
         <li>
-            <a href="/contact" className="hover:underline">Contact</a>
+            <Link href="/contact" className="hover:underline">Contact</Link>
         </li>
     </ul>
     </div>

@@ -1,10 +1,15 @@
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import Error from "../auth-error";
 
-export default function Page() {
+export default function Page({ searchParams }) {
+
+    const isError = searchParams.error;
+
     return (
         <div className="min-h-screen w-full dark:bg-gray-900 py-[7rem]">
+            {isError && <Error message="Failed to login" />}
             <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0">
           <a href="#" className="flex flex-col-reverse gap-5 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -16,7 +21,7 @@ export default function Page() {
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                       Log In
                   </h1>
-                  <form className="space-y-4 md:space-y-6" action="#">
+                  <form action="/auth/login" className="space-y-4 md:space-y-6" method="POST">
                       <div>
                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                           <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="dev@stencukpage.com" required />

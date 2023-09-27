@@ -21,7 +21,7 @@ export default function Home() {
           literary destination. We look forward to helping you discover your next great read.
     </p>
                     <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                        <a href="#" className="inline-flex justify-center items-center py-3 px-5 
+                        <Link href="/shop" className="inline-flex justify-center items-center py-3 px-5 
       text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-500 to-cyan-500
       bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900">
                             Browse Books
@@ -29,10 +29,10 @@ export default function Home() {
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" 
       strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                             </svg>
-                        </a>
-                        <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                        </Link>
+                        <Link href="/about" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                             About Us
-                        </a>  
+                        </Link>  
                     </div>
                 </div>
                 <div className="dark:brightness-[0.85] w-full flex items-center justify-center">
