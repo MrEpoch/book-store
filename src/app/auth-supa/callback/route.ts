@@ -1,3 +1,4 @@
+import CreateUser from '@/utils/user'
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
@@ -12,7 +13,10 @@ export async function GET(request: NextRequest) {
 
   if (code) {
     const supabase = createRouteHandlerClient<any>({ cookies })
-    await supabase.auth.exchangeCodeForSession(code)
+    const { data } = await supabase.auth.exchangeCodeForSession(code)
+    if (data && data.user) {
+        await CreateUser(data.user.id)
+    }
   }
 
   // URL to redirect to after sign in process completes

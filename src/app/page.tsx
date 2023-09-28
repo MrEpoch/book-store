@@ -71,7 +71,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="min-h-screen max-w-screen-xl mx-auto flex flex-col items-center px-4 sm:px-6 lg:px-8 py-[15rem]">
-                <h2 className="text-4xl font-semibold text-white">
+                <h2 className="md:text-6xl text-3xl font-semibold dark:text-white">
                     Contact Us!
                 </h2>
                 <Image src={Contact} alt="books" />

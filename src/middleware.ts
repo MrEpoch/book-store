@@ -2,6 +2,7 @@ import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
+import { prisma } from './utils/db'
 
 export async function middleware(req: NextRequest) {
     const res = NextResponse.next()
@@ -43,6 +44,21 @@ export async function middleware(req: NextRequest) {
         } else {
             return NextResponse.redirect(new URL('/login', req.url))
         }
+    }
+
+    if (pathname.startsWith("new-product") || pathname.startsWith("update-product")) {
+        if (data.session) {
+            const userDb = await prisma.user.findUnique({
+                where: {
+                    supabaseUserId: data.session.user.id
+                }
+            })
+            if (!userDb || userDb.role !== "ADMIN") {
+                return NextResponse.redirect(new URL('/login', req.url))
+            }
+            return res;
+        }
+        return NextResponse.redirect(new URL('/login', req.url))
     }
 
     return res;

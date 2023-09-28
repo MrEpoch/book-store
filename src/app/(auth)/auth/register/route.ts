@@ -11,20 +11,16 @@ export async function POST(request: Request) {
   const password = String(formData.get('password'))
   const supabase = createRouteHandlerClient<any>({ cookies })
 
-  await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      emailRedirectTo: `${requestUrl.origin}/auth/callback`,
+      emailRedirectTo: `${requestUrl.origin}/auth-supa/callback`,
     },
   })
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  })
-
   if (error) {
+      console.log(error);
       return NextResponse.redirect(requestUrl.origin + "/register?error=true", {
       status: 301,
     })
