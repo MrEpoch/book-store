@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
 import { prisma } from './utils/db'
+import { GetUser } from './utils/user'
 
 export async function middleware(req: NextRequest) {
     const res = NextResponse.next()
@@ -48,11 +49,7 @@ export async function middleware(req: NextRequest) {
 
     if (pathname.startsWith("new-product") || pathname.startsWith("update-product")) {
         if (data.session) {
-            const userDb = await prisma.user.findUnique({
-                where: {
-                    supabaseUserId: data.session.user.id
-                }
-            })
+            const userDb = await GetUser(data.session.user.id);
             if (!userDb || userDb.role !== "ADMIN") {
                 return NextResponse.redirect(new URL('/login', req.url))
             }

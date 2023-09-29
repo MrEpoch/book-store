@@ -94,6 +94,7 @@ export const CheckUpdatedProduct = (data: FormData) => {
     const isimage = normal_check.safeParse(data.get('isimage'));
     const image = data.get('image') as File;
     const formerName = normal_check.safeParse(data.get('formerName'));
+    const id = normal_check.safeParse(data.get('id'));
 
     
     if (!name.success) {
@@ -130,6 +131,11 @@ export const CheckUpdatedProduct = (data: FormData) => {
         return {
             error: true,
             type: 'formerName',
+        }
+    } else if (!id.success) {
+        return {
+            error: true,
+            type: 'id',
         }
     }
 
@@ -173,6 +179,7 @@ export const CheckUpdatedProduct = (data: FormData) => {
         price: newPrice,
         stripeId: stripeId.data,
         description: description.data,
-        formerName: formerName.data
+        formerName: formerName.data,
+        id: id.data
     }
 }

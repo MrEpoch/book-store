@@ -42,4 +42,13 @@ export const deleteProductImage = async (image: string, supabase: SupabaseClient
     const { error } = await supabase.storage
         .from('book-store')
         .remove([`images/${image}`]);
+    if (error) {
+        return {
+            error: true,
+            type: "image"
+        };
+    }
+    return {
+        error: false
+    }
 }
