@@ -8,6 +8,8 @@ export default function ImageComponents() {
     <>
       {image ? (
         <Image
+          width={1000}
+          height={750}
           className="rounded-lg w-full h-full object-cover"
           src={URL.createObjectURL(image[0])}
           alt=""
@@ -27,9 +29,9 @@ export default function ImageComponents() {
             />
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M6 1v4a1 1 0 0 1-1 1H1m14 12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2v16ZM11.045 7.514a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.857 15.92l2.616-5.333 1.912 4.68 1.61-2.717 1.81 3.37H3.858Z"
             />
           </svg>

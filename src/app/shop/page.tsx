@@ -1,26 +1,8 @@
 import ShopItem from "./ShopItem";
-import Book1 from "@/assets/Book1.webp";
-import Book2 from "@/assets/Book2.webp";
-import Book3 from "@/assets/Book3.webp";
+import { getProducts } from "@/utils/product";
 
-export default function Page() {
-  const items = [
-    {
-      name: "Great Book",
-      price: "$49.99",
-      image: Book1,
-    },
-    {
-      name: "Great Book",
-      price: "$49.99",
-      image: Book2,
-    },
-    {
-      name: "Great Book",
-      price: "$49.99",
-      image: Book3,
-    },
-  ];
+export default async function Page() {
+  const products = await getProducts(0, 10);
 
   return (
     <div className="min-h-screen py-[5rem] w-full dark:bg-gray-900">
@@ -29,9 +11,10 @@ export default function Page() {
           className="grid grid-cols-1 gap-x-6 gap-y-10 
         sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
         >
-          {items.map((item, index) => (
+          {products?.map((item, index) => (
             <ShopItem item={item} key={index} />
           ))}
+          {products?.length === 10 && <div/>}
         </div>
       </div>
     </div>

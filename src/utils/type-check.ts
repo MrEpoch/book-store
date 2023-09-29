@@ -9,6 +9,7 @@ export const CheckProduct = (data: FormData) => {
   const image = data.get("image") as File;
   const category = normal_check.safeParse(data.get("category"));
   const stripeId = normal_check.safeParse(data.get("stripeId"));
+  const quantity = normal_check.safeParse(data.get("quantity"));
 
   if (!name.success) {
     return {
@@ -36,14 +37,21 @@ export const CheckProduct = (data: FormData) => {
       type: "stripeId",
     };
   } else if (!image) {
-    return {
+      console.log("Primal");
+      return {
       error: true,
       type: "image",
+    };
+  } else if (!quantity.success) {
+    return {
+      error: true,
+      type: "quantity",
     };
   }
 
   const img_ext = image?.name.split(".").pop();
   if (!img_ext || !["jpg", "jpeg", "png", "webp"].includes(img_ext)) {
+      console.log("no ext");
     return {
       error: true,
       type: "image",
@@ -69,7 +77,15 @@ export const CheckProduct = (data: FormData) => {
     };
   }
 
+  if (Number.isNaN(Number.parseInt(quantity.data))) {
+    return {
+      error: true,
+      type: "quantity",
+    }
+  }
+
   const newPrice: number = parseFloat(parseFloat(price.data).toFixed(2));
+  const newQuantity: number = parseInt(quantity.data); 
 
   return {
     error: false,
@@ -79,6 +95,7 @@ export const CheckProduct = (data: FormData) => {
     price: newPrice,
     stripeId: stripeId.data,
     description: description.data,
+    quantity: newQuantity
   };
 };
 

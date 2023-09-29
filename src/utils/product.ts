@@ -8,6 +8,7 @@ export const createProduct = async (
   price: number,
   stripeId: string,
   image_name: string,
+  quantity: number
 ) => {
   try {
     const product = await prisma.product.create({
@@ -18,6 +19,7 @@ export const createProduct = async (
         price,
         stripeProductId: stripeId,
         image: image_name,
+        quantity: quantity,
       },
     });
     return product;
@@ -85,3 +87,18 @@ export const getProduct = async (id: string) => {
     return null;
   }
 };
+
+export const getProducts = async (skip: number, take=10) => {
+  try {
+    const products = await prisma.product.findMany({
+      take,
+      skip,
+      orderBy: {
+        createdAt: "desc",
+      }
+    });
+      return products;
+  } catch (e) {
+      
+  }
+}

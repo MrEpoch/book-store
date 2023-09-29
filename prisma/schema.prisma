@@ -46,7 +46,7 @@ model Product {
     category            Categories
     stripeProductId     String
     image               String
-    orderCount          Int
+    orderCount          Int             @default(0)
     quantity            Int
 
     orderItems          OrderItem[]

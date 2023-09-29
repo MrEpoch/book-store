@@ -2,8 +2,9 @@ import { createProduct } from "@/utils/product";
 import { StoreProductImage } from "@/utils/storage";
 import { CheckProduct } from "@/utils/type-check";
 import { Categories } from "@prisma/client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -11,11 +12,12 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const typechecked = CheckProduct(formData);
-  const supabase = createClientComponentClient();
+  const supabase = createRouteHandlerClient({ cookies });
 
   if (typechecked?.error) {
+      console.log("came from typer before");
     return NextResponse.redirect(
-      requestUrl.origin + "/new-product?error=" + typechecked?.type,
+        requestUrl.origin + "/admin/new-product?error=" + typechecked?.type,
       {
         status: 301,
       },
@@ -23,8 +25,9 @@ export async function POST(request: Request) {
   }
 
   if (!typechecked?.image) {
+      console.log("typer");
     return NextResponse.redirect(
-      requestUrl.origin + "/new-product?error=image",
+        requestUrl.origin + "/admin/new-product?error=image",
       {
         status: 301,
       },
@@ -34,8 +37,10 @@ export async function POST(request: Request) {
   const image = await StoreProductImage(typechecked.image, supabase);
 
   if (image?.error || image?.image === null) {
+      console.log("one", image?.error);
+      console.log("two", image?.image);
     return NextResponse.redirect(
-      requestUrl.origin + "/new-product?error=image",
+        requestUrl.origin + "/admin/new-product?error=image",
       {
         status: 301,
       },
@@ -49,9 +54,10 @@ export async function POST(request: Request) {
     typechecked.price,
     typechecked.stripeId,
     image.image as string,
+    typechecked.quantity as number
   );
 
-  return NextResponse.redirect(requestUrl.origin + "/shop", {
-    status: 301,
-  });
+  return NextResponse.json({
+    success: true
+  })
 }

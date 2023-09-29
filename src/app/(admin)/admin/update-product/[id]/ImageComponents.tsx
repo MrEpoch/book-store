@@ -29,6 +29,8 @@ export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
   return (
     <>
       <Image
+        width={1000}
+        height={750}
         className="rounded-lg w-full h-full object-cover"
         src={image}
         alt="New Image"

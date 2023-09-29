@@ -2,7 +2,6 @@ import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 
 import type { NextRequest } from "next/server";
-import { prisma } from "./utils/db";
 import { GetUser } from "./utils/user";
 
 export async function middleware(req: NextRequest) {
@@ -48,12 +47,16 @@ export async function middleware(req: NextRequest) {
   }
 
   if (
-    pathname.startsWith("new-product") ||
-    pathname.startsWith("update-product")
+      pathname.startsWith("/admin") ||
+      pathname.startsWith("/admin-api")
   ) {
     if (data.session) {
-      const userDb = await GetUser(data.session.user.id);
-      if (!userDb || userDb.role !== "ADMIN") {
+      const userDb = await fetch(`${req.nextUrl.origin}/api/verify?id=${data.session.user.id}`);
+      if (!userDb.ok) {
+        return NextResponse.redirect(new URL("/login", req.url));          
+      } 
+        const res_data = await userDb.json();
+      if (!res_data.isAdmin) {
         return NextResponse.redirect(new URL("/login", req.url));
       }
       return res;

@@ -2,8 +2,9 @@ import { updateProduct } from "@/utils/product";
 import { StoreProductImage, deleteProductImage } from "@/utils/storage";
 import { CheckUpdatedProduct } from "@/utils/type-check";
 import { Categories } from "@prisma/client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 
 export const dynamic = "force-dynamic";
 
@@ -11,11 +12,11 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const typechecked = CheckUpdatedProduct(formData);
-  const supabase = createClientComponentClient();
+  const supabase = createRouteHandlerClient({ cookies });
 
   if (typechecked?.error) {
     return NextResponse.redirect(
-      requestUrl.origin + "/update-product?error=" + typechecked?.type,
+        requestUrl.origin + "/admin/update-product?error=" + typechecked?.type,
       {
         status: 301,
       },
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
     await deleteProductImage(image, supabase);
     if (newImage?.error) {
       return NextResponse.redirect(
-        requestUrl.origin + "/update-product?error=image",
+          requestUrl.origin + "/admin/update-product?error=image",
         {
           status: 301,
         },

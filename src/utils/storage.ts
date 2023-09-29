@@ -24,13 +24,14 @@ export const StoreProductImage = async (
 
   const newImage = await image.arrayBuffer();
 
+  console.log(await supabase.auth.getUser());
+
   const { error } = await supabase.storage
     .from("book-store")
-    .upload(`images/${new_image_name}`, newImage, {
-      cacheControl: "3600",
-    });
+    .upload(`images/${new_image_name}`, newImage);
 
   if (error) {
+      console.log(error);
     return {
       error: true,
       type: "image",
