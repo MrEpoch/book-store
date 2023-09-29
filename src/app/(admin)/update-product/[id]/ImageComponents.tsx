@@ -1,0 +1,48 @@
+"use client";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import WhiteSpace from "@/assets/WhiteSpace.webp";
+
+export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
+  const [image, setImage] = useState<string | StaticImageData>(WhiteSpace);
+  const supabase = createClientComponentClient();
+  const router = useRouter();
+
+  useEffect(() => {
+    async function getSavedImage(imgUrl: string) {
+      const { data, error } = await supabase.storage
+        .from("book-store")
+        .download(imgUrl);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setImage(url);
+      } else {
+        console.log(error);
+        router.replace("/new-product?error=download");
+      }
+    }
+    getSavedImage(imgUrl);
+  });
+
+  return (
+    <>
+      <Image
+        className="rounded-lg w-full h-full object-cover"
+        src={image}
+        alt="New Image"
+      />{" "}
+      )
+      <input
+        type="file"
+        required
+        onChange={(e) => {
+          e.target.files && setImage(URL.createObjectURL(e.target.files[0]));
+        }}
+        className="absolute w-full h-full z-10 top-0 left-0 opacity-0 cursor-pointer"
+        name="image"
+      />
+    </>
+  );
+}
