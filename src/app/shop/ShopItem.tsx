@@ -12,16 +12,12 @@ export default function ShopItem({
 }) {
 
   const [imgUrl, setImgUrl] = useState<string | null>(null);
-  const supabase = createClientComponentClient();
   async function getImgUrl() {
-      const { data, error } = await supabase.storage
+      const supabase = createClientComponentClient();
+      const { data } = supabase.storage
         .from("book-store")
-            .download(`images/${item.image}`);
-      if (error) {
-        console.log(error);
-      } else {
-        setImgUrl(URL.createObjectURL(data));
-      }
+        .getPublicUrl(`images/${item.image}`);
+        if (data) setImgUrl(data.publicUrl);
   }
 
   useEffect(() => {
@@ -30,7 +26,7 @@ export default function ShopItem({
 
   return (
     <Link
-      href="#"
+      href={`/shop/${item.id}`}
       className="group shadow
         dark:bg-gray-800 rounded p-5 transition duration-300"
     >

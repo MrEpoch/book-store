@@ -12,15 +12,13 @@ export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
 
   useEffect(() => {
     async function getSavedImage(imgUrl: string) {
-      const { data, error } = await supabase.storage
+      const { data } = supabase.storage
         .from("book-store")
-        .download(imgUrl);
+        .getPublicUrl(`images/${imgUrl}`);
       if (data) {
-        const url = URL.createObjectURL(data);
-        setImage(url);
+        setImage(data.publicUrl);
       } else {
-        console.log(error);
-        router.replace("/new-product?error=download");
+        router.replace("/update-product?error=download");
       }
     }
     getSavedImage(imgUrl);
@@ -35,7 +33,6 @@ export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
         src={image}
         alt="New Image"
       />{" "}
-      )
       <input
         type="file"
         required
