@@ -2,6 +2,7 @@ import { getProduct } from "@/utils/product";
 import ImageComponents from "./ImageComponents";
 import { redirect } from "next/navigation";
 import Form from "./Form";
+import { update } from "../../ErrTypes";
 
 export default async function Page({
   params,
@@ -16,7 +17,7 @@ export default async function Page({
 
   return (
     <div className="min-h-screen dark:bg-gray-900 dark:text-white/90 py-[5rem]">
-      {searchParams?.error && <p className="text-red-500"></p>}
+      {searchParams?.error && <p className="text-red-500">{update[searchParams?.error as keyof typeof update]}</p>}
       <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16 relative">
         <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
           Update Product

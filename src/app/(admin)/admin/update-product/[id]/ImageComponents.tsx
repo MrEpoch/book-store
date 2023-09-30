@@ -7,6 +7,7 @@ import WhiteSpace from "@/assets/WhiteSpace.webp";
 
 export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
   const [image, setImage] = useState<string | StaticImageData>(WhiteSpace);
+    const [imgName, setImgName] = useState<File | null>(null);  
   const supabase = createClientComponentClient();
   const router = useRouter();
 
@@ -33,14 +34,17 @@ export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
         src={image}
         alt="New Image"
       />{" "}
+      <input hidden name="formerName" value={imgUrl} />
       <input
         type="file"
-        required
         onChange={(e) => {
           e.target.files && setImage(URL.createObjectURL(e.target.files[0]));
+          e.target.files && setImgName(e.target.files[0]);
         }}
         className="absolute w-full h-full z-10 top-0 left-0 opacity-0 cursor-pointer"
         name="image"
+        // @ts-ignore
+        value={imgName}
       />
     </>
   );

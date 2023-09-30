@@ -102,3 +102,20 @@ export const getProducts = async (skip: number, take=10) => {
       
   }
 }
+
+export const quantityChange = async (quantity: number, id: string) => {
+  try {
+    const product = await prisma.product.update({
+      where: {
+        id,
+      },
+      data: {
+        quantity: quantity,
+      },
+    });
+    return product;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+} 

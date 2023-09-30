@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   }
   await deleteProductImage(deleted.image, supabase);
 
-  return NextResponse.redirect(requestUrl.origin + "/shop", {
+  return NextResponse.redirect(requestUrl.origin + "/admin", {
     status: 301,
   });
 }

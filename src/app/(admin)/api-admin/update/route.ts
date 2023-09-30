@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     typechecked.id as string,
   );
 
-  return NextResponse.redirect(requestUrl.origin + "/shop", {
+  return NextResponse.redirect(requestUrl.origin + "/admin", {
     status: 301,
   });
 }

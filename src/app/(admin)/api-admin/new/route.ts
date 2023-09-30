@@ -15,7 +15,6 @@ export async function POST(request: Request) {
   const supabase = createRouteHandlerClient({ cookies });
 
   if (typechecked?.error) {
-      console.log("came from typer before");
     return NextResponse.redirect(
         requestUrl.origin + "/admin/new-product?error=" + typechecked?.type,
       {
@@ -25,7 +24,6 @@ export async function POST(request: Request) {
   }
 
   if (!typechecked?.image) {
-      console.log("typer");
     return NextResponse.redirect(
         requestUrl.origin + "/admin/new-product?error=image",
       {
@@ -37,8 +35,6 @@ export async function POST(request: Request) {
   const image = await StoreProductImage(typechecked.image, supabase);
 
   if (image?.error || image?.image === null) {
-      console.log("one", image?.error);
-      console.log("two", image?.image);
     return NextResponse.redirect(
         requestUrl.origin + "/admin/new-product?error=image",
       {
@@ -57,7 +53,7 @@ export async function POST(request: Request) {
     typechecked.quantity as number
   );
 
-  return NextResponse.json({
-    success: true
+  return NextResponse.redirect(requestUrl.origin + "/admin", {
+    status: 301,
   })
 }
