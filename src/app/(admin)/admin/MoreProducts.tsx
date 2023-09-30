@@ -8,9 +8,8 @@ export default function MoreProducts() {
     async function LoadNext() {
         const res = await fetch(`/api-admin/more?skip=${skip}&take=10`);
         const data = await res.json();
-        console.log(data);
         setProducts(data.products);
-        setSkip((prev) => prev + 10);
+        if (data.products.length === 10) setSkip((prev) => prev + 10);
     }
 
     return (
@@ -21,7 +20,7 @@ export default function MoreProducts() {
                     {product.name}
                 </th>
                 <td className="px-6 py-4">
-                    {product.quantity}
+                    <Link className="font-medium text-green-600 dark:text-green-500 hover:underline" href={`/admin/quantity-product/${product.id}`}>{product.quantity}</Link>
                 </td>
                 <td className="px-6 py-4">
                     {product.orderCount}
@@ -38,8 +37,8 @@ export default function MoreProducts() {
             </tr>
         ))}
         <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td colSpan={5}>
-                <button onClick={LoadNext} className="font-medium text-center w-full px-6 py-4 text-green-600 dark:text-green-500 hover:underline">Load more</button>
+            <td colSpan={6}>
+                <button onClick={LoadNext} className="font-medium text-center w-full flex justify-center py-4 text-green-600 dark:text-green-500 hover:underline">Load more</button>
             </td>
         </tr>
     </>

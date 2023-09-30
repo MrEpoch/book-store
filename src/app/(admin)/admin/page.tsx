@@ -80,11 +80,12 @@ export default async function Page() {
 
 
   return (
-    <div className="min-h-screen w-full dark:bg-gray-900">
-        <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full dark:bg-gray-900 py-[5rem]">
+        <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 flex flex-col gap-10">
+            <Link href="/admin/new-product" className="hover:bg-green-600 transition text-2xl bg-green-500 font-bold text-gray-900 dark:text-white text-center py-4 rounded-xl">Add new product</Link>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs w-full bg-gray-700 text-gray-700 uppercase  dark:text-gray-400">
+                    <thead className="text-xs w-full bg-gray-50 dark:bg-gray-700 text-gray-700 uppercase  dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Product name
@@ -113,7 +114,7 @@ export default async function Page() {
                                     {product.name}
                                 </th>
                                 <td className="px-6 py-4">
-                                    {product.quantity}
+                                    <Link className="font-medium text-green-600 dark:text-green-500 hover:underline" href={`/admin/quantity-product/${product.id}`}>{product.quantity}</Link>
                                 </td>
                                 <td className="px-6 py-4">
                                     {product.orderCount}
