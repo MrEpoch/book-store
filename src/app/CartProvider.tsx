@@ -30,8 +30,8 @@ export default function CartProvider({
   const [cart, setCart] = React.useState<CartType[]>([]);
 
   const getCart_context = () => {
-      const cart = getCart();
-      return cart;
+    const cart = getCart();
+    return cart;
   };
 
   const insertIntoCart_context = (product: CartType) => {
@@ -48,13 +48,17 @@ export default function CartProvider({
         return item;
       }),
     );
-      updateQuantity(product);
+    updateQuantity(product);
   };
 
   useEffect(() => {
-      const cart_saved = getCart_context();
-    if (cart_saved && cart_saved[0] !== null && typeof cart_saved === "string") {
-        setCart(JSON.parse(cart_saved));
+    const cart_saved = getCart_context();
+    if (
+      cart_saved &&
+      cart_saved[0] !== null &&
+      typeof cart_saved === "string"
+    ) {
+      setCart(JSON.parse(cart_saved));
     }
   }, [setCart]);
 

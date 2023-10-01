@@ -9,7 +9,7 @@ export default function CartItems({ item }: { item: CartType }) {
   const { updateQuantity_context } = useCart() as CartContextItems;
 
   const [imgUrl, setImgUrl] = useState<string>("");
-    
+
   async function getImgUrl() {
     const supabase = createClientComponentClient();
     const { data } = supabase.storage
@@ -24,7 +24,7 @@ export default function CartItems({ item }: { item: CartType }) {
 
   const updateCart = (e: any) => {
     if (Number.isNaN(Number.parseInt(e.target.value))) {
-        return;
+      return;
     }
     item.quantity = Number.parseInt(e.target.value);
     updateQuantity_context(item);
@@ -48,7 +48,9 @@ export default function CartItems({ item }: { item: CartType }) {
             <h3 className="word-break">{item.name}</h3>
             <p className="ml-4">${item.price}</p>
           </div>
-          <p className="mt-1 word-break text-sm text-gray-500">{item.description.slice(0, 50)}</p>
+          <p className="mt-1 word-break text-sm text-gray-500">
+            {item.description.slice(0, 50)}
+          </p>
         </div>
         <div className="flex flex-1 gap-3 items-end justify-between text-sm">
           <input
@@ -56,7 +58,7 @@ export default function CartItems({ item }: { item: CartType }) {
             className="text-gray-500
         dark:text-gray-200 max-w-[100px] w-full dark:bg-gray-800"
             value={item.quantity}
-      onChange={updateCart}
+            onChange={updateCart}
           />
           <div className="flex">
             <button

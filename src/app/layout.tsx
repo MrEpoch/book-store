@@ -24,9 +24,9 @@ export default function RootLayout({
         <ThemeProvider>
           <CartContext>
             <div className="relative">
-            <Header />
-            {children}
-            <Footer />
+              <Header />
+              {children}
+              <Footer />
             </div>
           </CartContext>
         </ThemeProvider>
