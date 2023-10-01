@@ -31,7 +31,7 @@ export const StoreProductImage = async (
     .upload(`images/${new_image_name}`, newImage);
 
   if (error) {
-      console.log(error);
+    console.log(error);
     return {
       error: true,
       type: "image",

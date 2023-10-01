@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
   if (!id.success) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/update-product?error=id",
+      requestUrl.origin + "/admin/update-product?error=id",
       {
         status: 301,
       },
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   const deleted = await deleteProduct(id.data);
   if (!deleted) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/update-product?error=deleted",
+      requestUrl.origin + "/admin/update-product?error=deleted",
       {
         status: 301,
       },

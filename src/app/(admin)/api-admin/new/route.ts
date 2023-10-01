@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   if (typechecked?.error) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/new-product?error=" + typechecked?.type,
+      requestUrl.origin + "/admin/new-product?error=" + typechecked?.type,
       {
         status: 301,
       },
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
   if (!typechecked?.image) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/new-product?error=image",
+      requestUrl.origin + "/admin/new-product?error=image",
       {
         status: 301,
       },
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
   if (image?.error || image?.image === null) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/new-product?error=image",
+      requestUrl.origin + "/admin/new-product?error=image",
       {
         status: 301,
       },
@@ -50,10 +50,10 @@ export async function POST(request: Request) {
     typechecked.price,
     typechecked.stripeId,
     image.image as string,
-    typechecked.quantity as number
+    typechecked.quantity as number,
   );
 
   return NextResponse.redirect(requestUrl.origin + "/admin", {
     status: 301,
-  })
+  });
 }

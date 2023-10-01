@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   if (typechecked?.error) {
     return NextResponse.redirect(
-        requestUrl.origin + "/admin/update-product?error=" + typechecked?.type,
+      requestUrl.origin + "/admin/update-product?error=" + typechecked?.type,
       {
         status: 301,
       },
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     await deleteProductImage(image, supabase);
     if (newImage?.error) {
       return NextResponse.redirect(
-          requestUrl.origin + "/admin/update-product?error=image",
+        requestUrl.origin + "/admin/update-product?error=image",
         {
           status: 301,
         },

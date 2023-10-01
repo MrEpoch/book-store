@@ -8,7 +8,11 @@ export default function Page({
 }) {
   return (
     <div className="min-h-screen dark:bg-gray-900 dark:text-white/90">
-      {searchParams?.error && <p className="text-red-500">{new_product[searchParams?.error as keyof typeof new_product]}</p>}
+      {searchParams?.error && (
+        <p className="text-red-500">
+          {new_product[searchParams?.error as keyof typeof new_product]}
+        </p>
+      )}
       <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
         <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
           Add a new product

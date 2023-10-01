@@ -7,7 +7,7 @@ import WhiteSpace from "@/assets/WhiteSpace.webp";
 
 export default function ImageComponents({ imgUrl }: { imgUrl: string }) {
   const [image, setImage] = useState<string | StaticImageData>(WhiteSpace);
-    const [imgName, setImgName] = useState<File | null>(null);  
+  const [imgName, setImgName] = useState<File | null>(null);
   const supabase = createClientComponentClient();
   const router = useRouter();
 

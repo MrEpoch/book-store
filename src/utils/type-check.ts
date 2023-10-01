@@ -37,8 +37,8 @@ export const CheckProduct = (data: FormData) => {
       type: "stripeId",
     };
   } else if (!image) {
-      console.log("Primal");
-      return {
+    console.log("Primal");
+    return {
       error: true,
       type: "image",
     };
@@ -51,7 +51,7 @@ export const CheckProduct = (data: FormData) => {
 
   const img_ext = image?.name.split(".").pop();
   if (!img_ext || !["jpg", "jpeg", "png", "webp"].includes(img_ext)) {
-      console.log("no ext");
+    console.log("no ext");
     return {
       error: true,
       type: "image",
@@ -81,11 +81,11 @@ export const CheckProduct = (data: FormData) => {
     return {
       error: true,
       type: "quantity",
-    }
+    };
   }
 
   const newPrice: number = parseFloat(parseFloat(price.data).toFixed(2));
-  const newQuantity: number = parseInt(quantity.data); 
+  const newQuantity: number = parseInt(quantity.data);
 
   return {
     error: false,
@@ -95,7 +95,7 @@ export const CheckProduct = (data: FormData) => {
     price: newPrice,
     stripeId: stripeId.data,
     description: description.data,
-    quantity: newQuantity
+    quantity: newQuantity,
   };
 };
 

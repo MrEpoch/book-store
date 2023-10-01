@@ -46,16 +46,15 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  if (
-      pathname.startsWith("/admin") ||
-      pathname.startsWith("/admin-api")
-  ) {
+  if (pathname.startsWith("/admin") || pathname.startsWith("/admin-api")) {
     if (data.session) {
-      const userDb = await fetch(`${req.nextUrl.origin}/api/verify?id=${data.session.user.id}`);
+      const userDb = await fetch(
+        `${req.nextUrl.origin}/api/verify?id=${data.session.user.id}`,
+      );
       if (!userDb.ok) {
-        return NextResponse.redirect(new URL("/login", req.url));          
-      } 
-        const res_data = await userDb.json();
+        return NextResponse.redirect(new URL("/login", req.url));
+      }
+      const res_data = await userDb.json();
       if (!res_data.isAdmin) {
         return NextResponse.redirect(new URL("/login", req.url));
       }
