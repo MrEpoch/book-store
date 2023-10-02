@@ -200,72 +200,79 @@ export const CheckUpdatedProduct = (data: FormData) => {
 };
 
 export function checkPayment(data: FormData) {
-  const standardEmail = z.string().email();
-  const standardPhone = z.string().min(7);
-  const standardString = z.string().min(1);
-  const standardPostcode = z.string().regex(/^\d{5}$/);
+  try {
+      const standardEmail = z.string().email();
+      const standardPhone = z.string().min(7);
+      const standardString = z.string().min(1);
+      const standardPostcode = z.string().regex(/^\d{5}$/);
 
-  const email = standardEmail.safeParse(data.get("email"));
-  const phone = standardPhone.safeParse(data.get("phone"));
-  const full_name = standardString.safeParse(data.get("full_name"));
-  const address = standardString.safeParse(data.get("address"));
-  const country = standardString.safeParse(data.get("country"));
-  const city = standardString.safeParse(data.get("city"));
-  const postalcode = standardPostcode.safeParse(data.get("postal_code"));
-  const cart = data.get("cart") as string;
+      const email = standardEmail.safeParse(data.get("email"));
+      const phone = standardPhone.safeParse(data.get("phone"));
+      const full_name = standardString.safeParse(data.get("full_name"));
+      const address = standardString.safeParse(data.get("address"));
+      const country = standardString.safeParse(data.get("country"));
+      const city = standardString.safeParse(data.get("city"));
+      const postalcode = standardPostcode.safeParse(data.get("postal_code"));
+      const cart = JSON.parse(data.get("cart") as string);
 
-  if (!email.success) {
-    return {
-      error: true,
-      type: "email",
-    };
-  } else if (!country.success) {
-    return {
-      error: true,
-      type: "country",
-    };
-  } else if (!phone.success) {
-    return {
-      error: true,
-      type: "phone",
-    };
-  } else if (!full_name.success) {
-    return {
-      error: true,
-      type: "full_name",
-    };
-  } else if (!address.success) {
-    return {
-      error: true,
-      type: "address",
-    };
-  } else if (!city.success) {
-    return {
-      error: true,
-      type: "city",
-    };
-  } else if (!postalcode.success) {
-    return {
-      error: true,
-      type: "postal_code",
-    };
+      if (!email.success) {
+        return {
+          error: true,
+          type: "email",
+        };
+      } else if (!country.success) {
+        return {
+          error: true,
+          type: "country",
+        };
+      } else if (!phone.success) {
+        return {
+          error: true,
+          type: "phone",
+        };
+      } else if (!full_name.success) {
+        return {
+          error: true,
+          type: "full_name",
+        };
+      } else if (!address.success) {
+        return {
+          error: true,
+          type: "address",
+        };
+      } else if (!city.success) {
+        return {
+          error: true,
+          type: "city",
+        };
+      } else if (!postalcode.success) {
+        return {
+          error: true,
+          type: "postal_code",
+        };
+      }
+
+      if (!countries.includes(country.data)) {
+        return {
+          error: true,
+          type: "country",
+        };
+      }
+
+      return {
+        email: email.data,
+        phone: phone.data,
+        full_name: full_name.data,
+        address: address.data,
+        country: country.data,
+        city: city.data,
+        postalcode: postalcode.data,
+        cart
+      };
+  } catch (error) {
+      return {
+          error: true,
+          type: "unknown",
+      }
   }
-
-  if (!countries.includes(country.data)) {
-    return {
-      error: true,
-      type: "country",
-    };
-  }
-
-  return {
-    email,
-    phone,
-    full_name,
-    address,
-    country,
-    city,
-    postalcode,
-    cart,
-  };
 }

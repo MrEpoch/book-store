@@ -81,6 +81,7 @@ model Order {
     
     userId          String?
     user            User?            @relation(fields: [userId], references: [id])
+    payed           Boolean          @default(false)
     
     orderItems      OrderItem[]
     orderStatus     status          @default(pending)
