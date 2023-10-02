@@ -144,3 +144,17 @@ export async function clearExpiredOrders() {
         }
     })
 }
+
+export async function fullFillOrder(orderId: string) {
+    const order = await prisma.order.update({
+        where: {
+            id: orderId
+        },
+        data: {
+            payed: true,
+            orderStatus: "processing"
+        }
+    });
+
+    return order;
+}

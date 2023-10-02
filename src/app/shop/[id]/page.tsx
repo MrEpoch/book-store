@@ -1,15 +1,7 @@
-import { getProduct, getProducts } from "@/utils/product";
+import { getProduct } from "@/utils/product";
 import { redirect } from "next/navigation";
 import ShopItemImage from "./ShopItemImage";
 import AddToCart from "./CartAdd";
-
-export async function generateStaticParams() {
-  const product = await getProducts(0, 20);
-
-  return product?.map((product) => ({
-    id: product.id,
-  }));
-}
 
 export default async function Page({ params, searchParams }: any) {
   const product = await getProduct(String(params.id));
@@ -31,7 +23,7 @@ export default async function Page({ params, searchParams }: any) {
               <h3 className="text-lg text-gray-900 dark:text-white">
                 Category: {product.category}
               </h3>
-              <h3 className="text-lg text-gray-900 bg-green-500 px-4 dark:text-white w-fit rounded-xl">
+              <h3 className="text-lg text-white bg-green-500 px-4 dark:text-white w-fit rounded-xl">
                 ${product.price} USD
               </h3>
               <h3 className="text-lg text-gray-900 dark:text-white">
@@ -43,7 +35,7 @@ export default async function Page({ params, searchParams }: any) {
             </div>
             <div className="flex w-full mt-12 justify-center">
               <AddToCart item={product} />
-              <button className="transition hover:bg-green-600 bg-green-500 rounded-xl px-6 py-2 ml-4">
+              <button className="transition text-white hover:bg-green-600 bg-green-500 rounded-xl px-6 py-2 ml-4">
                 Buy Now
               </button>
             </div>

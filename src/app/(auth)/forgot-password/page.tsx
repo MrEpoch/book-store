@@ -3,7 +3,7 @@ import Logo from "@/assets/logo.png";
 import Image from "next/image";
 import Mess from "../mess-error";
 
-export default function ForgotPasswordPage({ searchParams }) {
+export default function ForgotPasswordPage({ searchParams }: { searchParams: { reset?: string } }) {
   return (
     <div className="min-h-screen w-full dark:bg-gray-900 py-[7rem]">
       {searchParams.reset && <Mess message="Verify your email" />}

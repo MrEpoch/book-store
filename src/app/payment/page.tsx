@@ -1,8 +1,10 @@
 import PaymentProvider from "./PaymentContext";
 import Stepper from "./Stepper";
-import StepperDecider from "./StepperDecider";
 import { payment_err } from "./ErrTypesPayment";
 import TurnOffError from "./TurnOffError";
+import { Suspense, lazy } from "react";
+
+const StepperDecider = lazy(() => import("./StepperDecider"));
 
 export default function Page({
   searchParams,
@@ -14,7 +16,9 @@ export default function Page({
       <PaymentProvider>
         <Stepper />
         <div className="w-full justify-center min-h-full flex flex-col max-w-screen-xl mx-auto p-4">
-          <StepperDecider />
+          <Suspense fallback={<div className="w-full h-24 bg-gray-200 dark:bg-gray-700 rounded-xl my-6 animate-pulse"></div>}>
+              <StepperDecider />
+          </Suspense>
         </div>
         {searchParams?.error && (
           <div

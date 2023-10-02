@@ -17,6 +17,8 @@ export default function PaymentForm() {
     full_name: "Alex",
     phone: "123-456-789",
     postal_code: "12345",
+    terms: false,
+    refund: false
   });
 
   return (
@@ -38,7 +40,7 @@ export default function PaymentForm() {
             name="full_name"
             type="text"
             id="last_name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
             placeholder="Anna Redwood"
             required
           />
@@ -58,7 +60,7 @@ export default function PaymentForm() {
             name="address"
             type="text"
             id="address"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
             placeholder="Local street 123"
             required
           />
@@ -78,7 +80,7 @@ export default function PaymentForm() {
             name="phone"
             type="tel"
             id="phone"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
             placeholder="123-455-678"
             pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{3})$/"
             required
@@ -99,7 +101,7 @@ export default function PaymentForm() {
             type="text"
             id="city"
             name="city"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
             placeholder="City"
             required
           />
@@ -119,7 +121,7 @@ export default function PaymentForm() {
             type="text"
             name="postal_code"
             id="postalcode"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
             placeholder="Postal Code"
             required
           />
@@ -140,7 +142,7 @@ export default function PaymentForm() {
           type="email"
           id="email"
           name="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
           placeholder="john.doe@company.com"
           required
         />
@@ -159,7 +161,7 @@ export default function PaymentForm() {
           onChange={(e) =>
             setFormState({ ...formState, country: e.target.value })
           }
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
         >
           {countries.map((country, i) => (
             <option key={i}>{country}</option>
@@ -171,9 +173,10 @@ export default function PaymentForm() {
           <input
             id="remember"
             type="checkbox"
-            checked={false}
+            checked={formState.terms}
+            onChange={(e) => setFormState({ ...formState, terms: e.target.checked })}
             value=""
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-green-600 dark:ring-offset-gray-800"
             required
           />
         </div>
@@ -184,7 +187,7 @@ export default function PaymentForm() {
           I agree with the{" "}
           <a
             href="/legal/terms-&-condition"
-            className="text-blue-600 hover:underline dark:text-blue-500"
+            className="text-green-600 hover:underline dark:text-green-500"
           >
             terms and conditions
           </a>
@@ -196,9 +199,10 @@ export default function PaymentForm() {
           <input
             id="remember"
             type="checkbox"
-            checked={false}
+            checked={formState.refund}
+            onChange={(e) => setFormState({ ...formState, refund: e.target.checked })}
             value=""
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-green-600 dark:ring-offset-gray-800"
             required
           />
         </div>
@@ -209,21 +213,19 @@ export default function PaymentForm() {
           I understand{" "}
           <a
             href="https://www.termsfeed.com/live/2fb80a47-7a52-4b5e-9665-5e25c1da5240"
-            className="text-blue-600 hover:underline dark:text-blue-500"
+            className="text-green-600 hover:underline dark:text-green-500"
           >
             refund policy
           </a>
           .
         </label>
       </div>
-
       <button
         type="submit"
         className="text-white
-                    bg-blue-700 hover:bg-blue-800 focus:ring-4
-                    focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5
-                    items-centerring-blue-800"
-        onClick={raiseStep}
+                    bg-green-700 hover:bg-green-800 focus:ring-4
+                    focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5
+                    items-centerring-green-800"
       >
         Process Payment
       </button>

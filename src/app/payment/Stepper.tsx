@@ -4,13 +4,13 @@ import { PaymentContextType, usePayment } from "./PaymentContext";
 
 export default function Stepper() {
   const buttonStates = {
-    colored: `flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] 
-            after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block 
-            dark:after:border-blue-800`,
+    colored: `flex w-full items-center text-green-600 dark:text-green-500 after:content-[''] 
+            after:w-full after:h-1 after:border-b after:border-green-100 after:border-4 after:inline-block 
+            dark:after:border-green-800`,
     gray: `flex w-full items-center after:content-[''] 
             after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 
             after:inline-block dark:after:border-gray-700`,
-    coloredInside: `flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0`,
+    coloredInside: `flex items-center justify-center w-10 h-10 bg-green-100 rounded-full lg:h-12 lg:w-12 dark:bg-green-800 shrink-0`,
     grayInside: `flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0`,
   };
 
@@ -22,7 +22,7 @@ export default function Stepper() {
       <li className={buttonStates.colored} onClick={startStep}>
         <div className={buttonStates.coloredInside}>
           <svg
-            className="w-4 h-4 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+            className="w-4 h-4 text-green-600 lg:w-6 lg:h-6 dark:text-green-300"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -44,7 +44,7 @@ export default function Stepper() {
           }
         >
           <svg
-            className="w-4 h-4 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+            className="w-4 h-4 text-green-600 lg:w-6 lg:h-6 dark:text-green-300"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -61,7 +61,7 @@ export default function Stepper() {
                         dark:bg-gray-700 shrink-0"
         >
           <svg
-            className="w-4 h-4 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+            className="w-4 h-4 text-green-600 lg:w-6 lg:h-6 dark:text-green-300"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"

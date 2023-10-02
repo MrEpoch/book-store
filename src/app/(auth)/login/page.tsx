@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Error from "../auth-error";
 
-export default function Page({ searchParams }) {
+export default function Page({ searchParams }: { searchParams: { error?: string } }) {
   const isError = searchParams.error;
 
   return (

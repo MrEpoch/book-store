@@ -2,7 +2,6 @@ import { quantityChange } from "@/utils/product";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
