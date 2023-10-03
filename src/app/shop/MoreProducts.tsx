@@ -15,12 +15,14 @@ export default function MoreProducts() {
 
   return (
     <>
+        <div className="absolute py-5 rounded-lg bottom-2 flex justify-center  w-full">
       <button
-        className="absolute py-5 rounded-lg bottom-2 w-full border-[2px]"
+        className="absolute py-3 rounded-lg bottom-2 px-8 w-fit border-[2px]"
         onClick={LoadNext}
       >
         Load More
-      </button>
+    </button>
+</div>
       {products.map((productOne) => (
         <ShopItem item={productOne} key={productOne.id} />
       ))}
