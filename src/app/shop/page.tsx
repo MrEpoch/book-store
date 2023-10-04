@@ -1,7 +1,11 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import MoreProducts from "./MoreProducts";
-import ShopItem from "./ShopItem";
+const ShopItem = dynamic(() => import("./ShopItem"), 
+    {
+        loading: () => <div className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse" />
+    }
+);
 import { getProducts } from "@/utils/product";
+import dynamic from "next/dynamic";
 
 export const revalidate = 0;
 

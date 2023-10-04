@@ -32,7 +32,7 @@ export default function CartItems({ item }: { item: CartType }) {
 
   return (
     <li className="flex py-6">
-      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border bg-gray-200 dark:bg-gray-700 border-gray-200">
         <Image
           src={imgUrl.length > 0 ? imgUrl : WhiteSpace}
           alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."

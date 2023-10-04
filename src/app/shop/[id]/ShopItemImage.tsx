@@ -18,7 +18,7 @@ export default function ShopItemImage({ imageUrl }: { imageUrl: string }) {
   }, [imageUrl]);
 
   return (
-    <div className="w-full rounded-lg h-full">
+    <div className="w-full rounded-lg">
       {imgUrl.length > 0 ? (
         <Image
           src={imgUrl}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ClosingLink from "./ClosingLink";
 import ThemeSwitch from "@/components/ThemeSwitch";
 import HeaderCart from "./HeaderCart";
 
@@ -7,41 +7,40 @@ export default function HeaderLinks() {
     <div className="hidden w-full md:block md:w-auto" id="is-hidden">
       <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
         <li className="py-2">
-          <Link
+          <ClosingLink
             href="/"
             className="block py-2 pl-3 pr-4 dark:hover:bg-gray-700 dark:hover:text-white 
                         md:dark:hover:bg-transparent 
       text-black rounded hover:text-green-700 md:hover:bg-transparent md:border-0 md:hover:text-green-700 
         md:bg-transparent md:p-0 dark:text-white"
-            aria-current="page"
           >
             Home
-          </Link>
+          </ClosingLink>
         </li>
         <li className="py-2">
-          <Link
+          <ClosingLink
             href="/about"
             className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 
         md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             About
-          </Link>
+          </ClosingLink>
         </li>
         <li className="py-2">
-          <Link
+          <ClosingLink
             href="/shop"
             className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Shop
-          </Link>
+          </ClosingLink>
         </li>
         <li className="py-2">
-          <Link
+          <ClosingLink
             href="/contact"
             className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Contact
-          </Link>
+          </ClosingLink>
         </li>
         <li>
           <ThemeSwitch

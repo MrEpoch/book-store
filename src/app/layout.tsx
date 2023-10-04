@@ -5,6 +5,7 @@ import { ThemeProvider } from "./ThemeProvider";
 import Header from "./Header";
 import Footer from "./Footer";
 import CartContext from "./CartProvider";
+import UtilsProvider from "./UtilsProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +22,16 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
+          <ThemeProvider>
+          <UtilsProvider>
           <CartContext>
             <div className="relative">
               <Header />
               {children}
               <Footer />
             </div>
-          </CartContext>
+        </CartContext>
+        </UtilsProvider>
         </ThemeProvider>
       </body>
     </html>
