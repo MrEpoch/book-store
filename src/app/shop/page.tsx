@@ -13,7 +13,7 @@ export default async function Page() {
   const products = await getProducts(0, 10);
 
   return (
-    <div className="min-h-screen py-[8rem] w-full dark:bg-gray-900">
+    <div className="min-h-screen py-[8rem] w-full dark:bg-darkmode-500">
       <div className="max-w-screen-2xl overflow-x-hidden w-full relative pb-[7rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="grid grid-cols-1 gap-x-6 gap-y-10 w-full

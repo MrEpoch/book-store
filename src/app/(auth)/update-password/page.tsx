@@ -5,7 +5,7 @@ import Mess from "../mess-error";
 
 export default function UpdatePasswordPage({ searchParams }: { searchParams: { reset?: string } }) {
   return (
-    <div className="min-h-screen w-full dark:bg-gray-900 py-[7rem]">
+    <div className="min-h-screen w-full dark:bg-darkmode-500 py-[7rem]">
       {searchParams.reset && <Mess message="Verify your email" />}
       <section className="">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">

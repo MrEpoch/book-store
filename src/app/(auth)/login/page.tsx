@@ -7,7 +7,7 @@ export default function Page({ searchParams }: { searchParams: { error?: string 
   const isError = searchParams.error;
 
   return (
-    <div className="min-h-screen w-full dark:bg-gray-900 py-[7rem]">
+    <div className="min-h-screen w-full dark:bg-darkmode-500 py-[7rem]">
       {isError && <Error message="Failed to login" />}
       <section className="">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0">

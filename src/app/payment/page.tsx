@@ -12,7 +12,7 @@ export default function Page({
   searchParams: { error?: string };
 }) {
   return (
-    <div className="min-h-screen w-full relative flex flex-col dark:bg-gray-900 dark:text-white/90">
+    <div className="min-h-screen w-full relative flex flex-col dark:bg-darkmode-500 dark:text-white/90">
       <PaymentProvider>
         <Stepper />
         <div className="w-full justify-center min-h-full flex flex-col max-w-screen-xl mx-auto p-4">

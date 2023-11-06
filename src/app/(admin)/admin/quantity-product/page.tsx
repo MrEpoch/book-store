@@ -7,7 +7,7 @@ export default function Quantity({
 }) {
   if (searchParams?.error) {
     return (
-      <div className="min-h-screen w-full dark:bg-gray-900">
+      <div className="min-h-screen w-full dark:bg-darkmode-500">
         <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white">
           INVALID ID OF ITEM
         </h3>

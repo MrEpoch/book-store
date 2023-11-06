@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative dark:bg-gray-900">
+    <div className="min-h-screen relative dark:bg-darkmode-500">
       <div
         className="min-h-screen max-w-screen-xl mx-auto px-4 
       sm:px-6 lg:px-8 flex flex-col gap-3 pt-[10rem]"
@@ -70,7 +70,7 @@ export default function Home() {
           <Image src={Books} alt="books" />
         </div>
       </div>
-      <div className="relative text-white dark:text-gray-900">
+      <div className="relative text-white dark:text-darkmode-500">
         <div className="custom-shape-divider-top-1695576915">
             <svg
             data-name="Layer 1"

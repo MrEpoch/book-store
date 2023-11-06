@@ -16,7 +16,7 @@ export default async function Page({
   if (!product) throw redirect("/");
 
   return (
-    <div className="min-h-screen dark:bg-gray-900 dark:text-white/90 py-[5rem]">
+    <div className="min-h-screen dark:bg-darkmode-500 dark:text-white/90 py-[5rem]">
       {searchParams?.error && (
         <p className="text-red-500">
           {update[searchParams?.error as keyof typeof update]}

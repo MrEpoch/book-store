@@ -6,7 +6,7 @@ export default function BreadCrumbs() {
 
   return (
     <nav
-      className="flex py-4 px-2 top-4 w-full justify-center dark:bg-gray-900 absolute"
+      className="flex py-4 px-2 top-4 w-full justify-center dark:bg-darkmode-500 absolute"
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-3">

@@ -16,7 +16,7 @@ export default async function Page({ params, searchParams }: any) {
   }
 
   return (
-    <div className="min-h-screen w-full py-32 dark:bg-gray-900">
+    <div className="min-h-screen w-full py-32 dark:bg-darkmode-500">
       <div className="max-w-screen-xl px-7 mx-auto">
           <div className="w-full flex md:flex-row flex-col md:max-h-[550px] dark:bg-black rounded-lg shadow-md bg-gray-200">
           <ShopItemImage imageUrl={product.image} />

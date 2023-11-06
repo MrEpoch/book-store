@@ -6,7 +6,7 @@ export default async function Page() {
   const products = (await getProducts(0, 10)) || [];
 
   return (
-    <div className="min-h-screen w-full dark:bg-gray-900 py-[5rem]">
+    <div className="min-h-screen w-full dark:bg-darkmode-500 py-[5rem]">
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 flex flex-col gap-10">
         <Link
           href="/admin/new-product"

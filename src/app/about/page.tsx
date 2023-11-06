@@ -36,7 +36,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="min-h-screen py-[7rem] w-full dark:bg-gray-900">
+    <div className="min-h-screen py-[7rem] w-full dark:bg-darkmode-500">
       <div className="min-h-screen flex flex-col gap-[5rem] max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="dark:text-white mb-4 max-[380px]:text-2xl text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
           About Our Bookstore

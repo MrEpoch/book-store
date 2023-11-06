@@ -7,7 +7,7 @@ export default function Page({
   searchParams: { error?: string };
 }) {
   return (
-    <div className="min-h-screen dark:bg-gray-900 dark:text-white/90">
+    <div className="min-h-screen dark:bg-darkmode-500 dark:text-white/90">
       {searchParams?.error && (
         <p className="text-red-500">
           {new_product[searchParams?.error as keyof typeof new_product]}

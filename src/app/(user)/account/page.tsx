@@ -22,7 +22,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="min-h-screen w-full dark:bg-gray-900 py-16">
+    <div className="min-h-screen w-full dark:bg-darkmode-500 py-16">
       <div className="max-w-screen-xl flex flex-col gap-8 justify-center px-7 mx-auto">
         <form method="POST" action="/auth/logout" className="w-full">
           <button

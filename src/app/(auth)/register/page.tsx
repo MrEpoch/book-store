@@ -5,7 +5,7 @@ import Error from "../auth-error";
 
 export default function Page({ searchParams }: { searchParams: { error?: string } }) {
   return (
-    <div className="min-h-screen w-full py-[7rem] dark:bg-gray-900">
+    <div className="min-h-screen w-full py-[7rem] dark:bg-darkmode-500">
       {searchParams.error && <Error message="Failed to Register" />}
       <section className="">
         <div className="flex flex-col items-center justify-center px-5 py-6 mx-auto  lg:py-0">
